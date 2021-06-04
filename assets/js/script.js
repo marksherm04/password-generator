@@ -1,6 +1,12 @@
-
-// Assignment code here
+// length of password for first if statement
 var passwordLength;
+var password = [];
+// selection by user to see which selections are made for arrays & other var used below
+var selections;
+var numbers;
+var characters;
+var upperCase;
+var lowerCase;
 
 // Arrays
 var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -20,10 +26,62 @@ function generatePassword(){
   } else {
     var numbers = window.confirm("Do you want to use numbers?")
     var characters = window.confirm("Do you want special characters?");
-    var upperLetters = window.confirm("Do you want Upper Case Letters?");
-    var lowerLetters = window.confirm("Do you want Lower Case Letters?");
+    var upperCase = window.confirm("Do you want Upper Case Letters?");
+    var lowerCase = window.confirm("Do you want Lower Case Letters?");
   };
 
+if (!numbers && !characters && !upperCase && !lowerCase) {
+  selections = alert("You must select at least character!")
+}
+// all 4 options selected
+else if (numbers && characters && upperCase && lowerCase) {
+  selections = numeric.concat(specialCharacters, upperCaseLetters, lowerCaseLetters);
+}
+// 3 selections made in different variances
+else if (numbers && characters && upperCase) {
+  selections = numeric.concat(specialCharacters && upperCaseLetters);
+}
+else if (numbers && characters && lowerCase) {
+  selections = numeric.concat(specialCharacters && lowerCaseLetters);
+}
+else if (characters && upperCase && lowerCase) {
+  selections = specialCharacters.concat(upperCaseLetters && lowerCaseLetters);
+}
+else if (numbers && upperCase && lowerCase) {
+  selections = numeric.concat(upperCaseLetters && lowerCaseLetters);
+}
+// 2 selections made in different variances
+else if (numbers && characters) {
+  selections = numeric.concat(specialCharacters);
+}
+else if (numbers && upperCase) {
+  selections = numeric.concat(upperCaseLetters);
+}
+else if (numbers && lowerCase) {
+  selections = numeric.concat(lowerCaseLetters);
+}
+else if (characters && upperCase) {
+  selections = specialCharacters.concat(upperCaseLetters);
+}
+else if (characters && lowerCase) {
+  selections = specialCharacters.concat(lowerCaseLetters);
+}
+else if (upperCase && lowerCase) {
+  selections = upperCaseLetters.concat(lowerCaseLetters);
+}
+// 1 selection made only
+else if (numbers) {
+  selections = numeric;
+}
+else if (characters) {
+  selections = specialCharacters;
+}
+else if (upperCase) {
+  selections = upperCaseLetters;
+}
+else if (lowerCase) {
+  selections = lowerCaseLetters;
+};
 
 
 
@@ -38,15 +96,6 @@ function generatePassword(){
 // };
 
 
-
-for(var i = 0; i < numeric.length; i++) {
-};
-
-
-
-
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -54,10 +103,8 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
-}
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
