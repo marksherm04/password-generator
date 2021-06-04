@@ -1,6 +1,5 @@
 // length of password for first if statement
 var passwordLength;
-var password = [];
 // selection by user to see which selections are made for arrays & other var used below
 var selections;
 var numbers;
@@ -15,7 +14,7 @@ var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "
 var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
  
-function generatePassword(){
+function generatePassword() {
   var passwordLength = parseInt(prompt("Input password length between 8-128"));
 
   if (!passwordLength) {
@@ -31,7 +30,7 @@ function generatePassword(){
   };
 
 if (!numbers && !characters && !upperCase && !lowerCase) {
-  selections = alert("You must select at least character!")
+  // need alert here when they look through and don't select any options to work
 }
 // all 4 options selected
 else if (numbers && characters && upperCase && lowerCase) {
@@ -83,18 +82,13 @@ else if (lowerCase) {
   selections = lowerCaseLetters;
 };
 
+// for loop to get password created
+// for (var i = 0; i < passwordLength; i++) {
+
+// }
 
 
-
-// accept only number input from numbers between 8-128
-// if (minLength < 8) {
-//   window.alert("Chose a higher number between 8-128");
-// } else if (maxLength > 128) {
-//   window.alert("Chose a lower number between 8-128");
-// } else {
-//   window.alert("This number works, you selected " + passwordLength + "!")
-// };
-
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -102,7 +96,8 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var passwordText = document.querySelector("#password").textContent;
+
   passwordText.value = password;
 };
 
