@@ -1,5 +1,5 @@
 // length of password for first if statement
-var passwordLength;
+var randomPassword;
 // selection by user to see which selections are made for arrays & other var used below
 var selections;
 var numbers;
@@ -13,20 +13,20 @@ var specialCharacters = ["!", "#", "$", "%", "&", "*", "+", "@", "^", "~", "_"]
 var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
- 
+ // generate password function start
 function generatePassword() {
-  var passwordLength = parseInt(prompt("Input password length between 8-128"));
+  randomPassword = parseInt(prompt("Input password length between 8-128"));
 
-  if (!passwordLength) {
+  if (!randomPassword) {
     alert("You need to enter a value!");
   }
-  else if (passwordLength <= 8 || passwordLength >= 128) {
-    passwordLength = parseInt(prompt("Error!   Password length must be between 8-128 characters!"))
+  else if (randomPassword <= 8 || randomPassword >= 128) {
+    randomPassword = parseInt(prompt("Error!   Password length must be between 8-128 characters!"))
   } else {
-    var numbers = window.confirm("Do you want to use numbers?")
-    var characters = window.confirm("Do you want special characters?");
-    var upperCase = window.confirm("Do you want Upper Case Letters?");
-    var lowerCase = window.confirm("Do you want Lower Case Letters?");
+    var numbers = confirm("Do you want to use numbers?")
+    var characters = confirm("Do you want special characters?");
+    var upperCase = confirm("Do you want Upper case letters?");
+    var lowerCase = confirm("Do you want lower case letters?");
   };
 
 if (!numbers && !characters && !upperCase && !lowerCase) {
@@ -83,12 +83,11 @@ else if (lowerCase) {
 };
 
 // for loop to get password created
-// for (var i = 0; i < passwordLength; i++) {
-
-// }
-
-
+for (var i = 0; i < randomPassword; i++) {
+  var pickPassword = selections[Math.floor(Math.random() * selections.length)];
 }
+};
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
