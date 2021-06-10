@@ -38,10 +38,10 @@ function generatePassword() {
     return;
     // otherwise the confirm prompts will start and cycle through all 4 options
   } else {
-    var numbers = confirm("Do you want to use numbers? Select OK for YES and CANCEL for NO")
-    var characters = confirm("Do you want special characters? Select OK for YES and CANCEL for NO");
-    var upperCase = confirm("Do you want Upper case letters? Select OK for YES and CANCEL for NO");
-    var lowerCase = confirm("Do you want lower case letters? Select OK for YES and CANCEL for NO");
+    var numbers = confirm("Do you want to use numbers? Select OK for YES and CANCEL for NO.")
+    var characters = confirm("Do you want special characters? Select OK for YES and CANCEL for NO.");
+    var upperCase = confirm("Do you want Upper case letters? Select OK for YES and CANCEL for NO.");
+    var lowerCase = confirm("Do you want lower case letters? Select OK for YES and CANCEL for NO.");
   };
 
   // if statements of refactored code for user selection.  First if statement gives all selections via OR operator
