@@ -30,6 +30,14 @@ header {
   color: hsl(206, 17%, 28%);
 }
 
+footer {
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 80px;
+  color: hsl(206, 17%, 28%);
+  font-size: 28px;
+}
+
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
