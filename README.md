@@ -13,6 +13,7 @@ An application that allows a user to create their own password.The user can sele
 
 ## Sreenshot of Page
 
+<img width="2479" alt="Screen Shot Password Generator" src="https://user-images.githubusercontent.com/81338255/121571391-f41ff080-c9f0-11eb-8582-4b6704667edd.png">
 
 ## Contributions
 Made with ❤ by Mark Sherman.
