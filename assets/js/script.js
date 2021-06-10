@@ -1,7 +1,7 @@
 // length of password for first if statement
 var randomPassword;
 // selection by user to see which selections are made for arrays & other var used below
-var selections;
+var selections = [];
 var numbers;
 var characters;
 var upperCase;
@@ -27,11 +27,15 @@ function generatePassword() {
   // if user selects ok or cancel on prompt, alert is returned
   if (!randomPassword) {
     alert("You need to enter a value!");
+    writePassword();
+    return;
     // TO DO - I WANT THIS TO LOOP IF NO SELECTION IS MADE !!!! //
   }
   // if password < 8 or password is > 128 then alert returns they must select betweeen 8-128 characters
   else if (randomPassword < 8 || randomPassword > 128) {
     randomPassword = parseInt(alert("Error!   Password length must be between 8-128 characters!"));
+    writePassword();
+    return;
     // TO DO - I WANT THIS TO LOOP IF NO SELECTION IS MADE !!!! //
 
     // otherwise the confirm prompts will start and cycle through all 4 options
@@ -42,80 +46,29 @@ function generatePassword() {
     var lowerCase = confirm("Do you want lower case letters?");
   };
 
-  // if no slections are made, alert will show to tell the user to select at least one option
-  if (!numbers && !characters && !upperCase && !lowerCase) {
-    selctions = alert("You must choose one option to generate your password!");
-  }
-  // TODO - LOOP BACK TO CHOOSE CHARACTERS PROMPT ABOVE
+  if (numbers || characters || upperCase || lowerCase) {
 
-  // Using the .concat method to merge 2 or more arrays, it takes one of the arrays and connects
-  // (cont.) to the others chosen based on which selection the user makes, each array in the concatenation
-  // copies the object into a new array
-  // all 4 options selected
-  else if (numbers && characters && upperCase && lowerCase) {
-    selections = numericCharacters.concat(specialCharacters, upperCaseLetters, lowerCaseLetters);
-   
+    if (numbers) {
+      selections = selections.concat(numericCharacters);
+    }
+
+    if (characters) {
+      selections = selections.concat(specialCharacters);
+    }
+
+    if (upperCase) {
+      selections = selections.concat(upperCaseLetters);
+    }
+
+    if (lowerCase) {
+      selections = selections.concat(lowerCaseLetters);
+    }
   }
-  // 3 selections made in different variances, will leave out the 4th input in the concatenation
-  else if (numbers && characters && upperCase) {
-    selections = numericCharacters.concat(specialCharacters, upperCaseLetters);
-    
+  else {
+    alert("Please select one of the choices!");
+    writePassword();
+    return;
   }
-  // 3 selections made
-  else if (numbers && characters && lowerCase) {
-    selections = numericCharacters.concat(specialCharacters, lowerCaseLetters);
-  }
-  // 3 selections made
-  else if (characters && upperCase && lowerCase) {
-    selections = specialCharacters.concat(upperCaseLetters, lowerCaseLetters);
-  }
-  // 3 selections made
-  else if (numbers && upperCase && lowerCase) {
-    selections = numericCharacters.concat(upperCaseLetters, lowerCaseLetters);
-  }
-  // 2 selections made in different variances
-  else if (numbers && characters) {
-    selections = numericCharacters.concat(specialCharacters);
-   
-  }
-  // 2 selections made
-  else if (numbers && upperCase) {
-    selections = numericCharacters.concat(upperCaseLetters);
-   
-  }
-  // 2 selections made
-  else if (numbers && lowerCase) {
-    selections = numericCharacters.concat(lowerCaseLetters);
-  }
-  // 2 selections made
-  else if (characters && upperCase) {
-    selections = specialCharacters.concat(upperCaseLetters);
-  }
-  // 2 selections made
-  else if (characters && lowerCase) {
-    selections = specialCharacters.concat(lowerCaseLetters);
-  }
-  // 2 selections made
-  else if (upperCase && lowerCase) {
-    selections = upperCaseLetters.concat(lowerCaseLetters);
-  }
-  // 1 selection made only
-  else if (numbers) {
-    selections = numericCharacters;
-  }
-  // 1 selection made
-  else if (characters) {
-    selections = specialCharacters;
-  }
-  // 1 selection made
-  else if (upperCase) {
-    selections = upperCaseLetters;
-    
-  }
-  // 1 selection made
-  else if (lowerCase) {
-    selections = lowerCaseLetters;
-  };
 
   // // for loop to get password created
   var mixCharacters = [];
@@ -124,9 +77,9 @@ function generatePassword() {
     mixCharacters.push(selections[Math.floor(Math.random() * selections.length)]);
   }
   var password = mixCharacters.join('');
-  return(password);
+  return (password);
 };
-    
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
